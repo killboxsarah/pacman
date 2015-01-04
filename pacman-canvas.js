@@ -1290,8 +1290,8 @@ function checkAppCache() {
 				// Pac Man
 
 				context.beginPath();
-				context.fillStyle = "Red";
-				context.strokeStyle = "White";
+				context.fillStyle = "orange";
+				context.strokeStyle = "orange";
 
 				context.arc(pacman.posX+pacman.radius,pacman.posY+pacman.radius,pacman.radius,pacman.angle1*Math.PI,pacman.angle2*Math.PI);
 				context.lineTo(pacman.posX+pacman.radius, pacman.posY+pacman.radius);
@@ -1299,8 +1299,8 @@ function checkAppCache() {
 				context.fill();
 
 				context.beginPath();
-				context.fillStyle = "Blue";
-				context.strokeStyle = "White";
+				context.fillStyle = "White";
+				context.strokeStyle = "#e3e3e3";
 
 				context.arc(pacman.posX+pacman.radius,pacman.posY+pacman.radius,pacman.radius - 5,pacman.angle1*Math.PI,pacman.angle2*Math.PI);
 				context.lineTo(pacman.posX+pacman.radius, pacman.posY+pacman.radius);
@@ -1308,7 +1308,7 @@ function checkAppCache() {
 				context.fill();
 
 				// Pac Jammer Star
-				context.fillStyle = "Red";
+				context.fillStyle = "orange";
 				context.strokeStyle = "White";
 
 				star(context, pacman.posX+pacman.radius, pacman.posY+pacman.radius, pacman.radius - 8, 5, 0.5);
