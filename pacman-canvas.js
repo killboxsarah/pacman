@@ -604,7 +604,7 @@
 			}	
 			
 			
-			var oppDir = this.getOppositeDirection();	// ghosts are not allowed to change direction 180°
+			var oppDir = this.getOppositeDirection();	// ghosts are not allowed to change direction 180ï¿½
 			
 			var dirs = [{},{},{},{}];		
 			dirs[0].field = game.getMapContent(pX,pY-1);
@@ -1282,16 +1282,36 @@ function checkAppCache() {
 				blinky.draw(context);
 				inky.draw(context);
 				clyde.draw(context);
+
+				// set composite property
+				context.globalCompositeOperation = 'source-over';
 				
 				
 				// Pac Man
+
 				context.beginPath();
-				context.fillStyle = "Yellow";
-				context.strokeStyle = "Yellow";
+				context.fillStyle = "Red";
+				context.strokeStyle = "White";
+
 				context.arc(pacman.posX+pacman.radius,pacman.posY+pacman.radius,pacman.radius,pacman.angle1*Math.PI,pacman.angle2*Math.PI);
 				context.lineTo(pacman.posX+pacman.radius, pacman.posY+pacman.radius);
 				context.stroke();
 				context.fill();
+
+				context.beginPath();
+				context.fillStyle = "Blue";
+				context.strokeStyle = "White";
+
+				context.arc(pacman.posX+pacman.radius,pacman.posY+pacman.radius,pacman.radius - 5,pacman.angle1*Math.PI,pacman.angle2*Math.PI);
+				context.lineTo(pacman.posX+pacman.radius, pacman.posY+pacman.radius);
+				context.stroke();
+				context.fill();
+
+				// Pac Jammer Star
+				context.fillStyle = "Red";
+				context.strokeStyle = "White";
+
+				star(context, pacman.posX+pacman.radius, pacman.posY+pacman.radius, pacman.radius - 8, 5, 0.5);
 			}
 			
 		}
@@ -1358,6 +1378,24 @@ function checkAppCache() {
 			
 			
 		}
+
+function star(ctx, x, y, r, p, m)
+{
+	ctx.save();
+	ctx.beginPath();
+	ctx.translate(x, y);
+	//ctx.rotate(12);
+	ctx.moveTo(0,0-r);
+	for (var i = 0; i < p; i++)
+	{
+		ctx.rotate(Math.PI / p);
+		ctx.lineTo(0, 0 - (r*m));
+		ctx.rotate(Math.PI / p);
+		ctx.lineTo(0, 0 - r);
+	}
+	ctx.fill();
+	ctx.restore();
+}
 
 
 	
